@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Movie Night Picker</title>
+  </head>
+  <body>
+    <h1>Movie Night Picker</h1>
+    <form id="movieForm">
+      <label for="genre">Select a Genre:</label>
+      <select id="genre">
+        <option value="Action">Action</option>
+        <option value="Comedy">Comedy</option>
+        <option value="Drama">Drama</option>
+        <option value="Horror">Horror</option>
+        <option value="Sci-fi">Sci-fi</option>
+      </select>
+      <br><br>
+      <label for="rating">Select a Rating:</label>
+      <select id="rating">
+        <option value="General">General</option>
+        <option value="Parental Guide">Parental Guide</option>
+        <option value="Parental Guide-13">Parental Guide-13</option>
+        <option value="Restricted">Restricted</option>
+        <option value="No One-17(Adults)">No One-17(Adults)</option>
+      </select>
+      <br><br>
+      <button type="submit">Pick a Movie</button>
+    </form>
+    <div id="results"></div>
+    <script>
+      const movieForm = document.getElementById('movieForm');
+      const genreSelect = document.getElementById('genre');
+      const ratingSelect = document.getElementById('rating');
+      const resultsDiv = document.getElementById('results');
+      
+      movieForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        let genre = genreSelect.value;
+        let rating = ratingSelect.value;
+        let movieTitle = '';
+        switch(genre) {
+          case 'Action':
+            if(rating == 'General') {
+              movieTitle = 'The Incredibles';
+            } else if(rating == 'Parental Guide' || rating == 'Parental Guide-13') {
+              movieTitle = 'Die Hard';
+            } else {
+              movieTitle = 'The Terminator';
+            }
+            break;
+          case 'Comedy':
+            if(rating == 'General') {
+              movieTitle = 'Toy Story';
+            } else if(rating == 'Parental Guide' || rating == 'Parental Guide-13') {
+              movieTitle = 'Dumb and Dumber';
+            } else {
+              movieTitle = 'The Hangover';
+            }
+            break;
+          case 'Drama':
+            if(rating == 'General') {
+              movieTitle = 'The Lion King';
+            } else if(rating == 'Parental Guide' || rating == 'Parental Guide-13') {
+              movieTitle = 'Forrest Gump';
+            } else {
+              movieTitle = 'The Shawshank Redemption';
+            }
+            break;
+          case 'Horror':
+            if(rating == 'General') {
+              movieTitle = 'Casper';
+            } else if(rating == 'Parental Guide' || rating == 'Parental Guide-13') {
+              movieTitle = 'The Ring';
+            } else {
+              movieTitle = 'Saw';
+            }
+            break;
+          case 'Sci-fi':
+            if(rating == 'General') {
+              movieTitle = 'WALL-E';
+            } else if(rating == 'Parental Guide' || rating == 'Parental Guide-13') {
+              movieTitle = 'Star Wars';
+            } else {
+              movieTitle = 'The Matrix';
+            }
+            break;
+        }
+        resultsDiv.innerHTML = 'Based on your selection, we recommend watching ' + movieTitle + '.';
+      });
+    </script>
+  </body>
+</html>
